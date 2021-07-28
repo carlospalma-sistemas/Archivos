@@ -16,22 +16,26 @@ public class Pantalla
             "Borrar contacto",
             "Salir"
         };
-        String opcion = (String)JOptionPane.showInputDialog(null,
+        do
+        {
+            String opcion = (String)JOptionPane.showInputDialog(null,
                                                     "Seleccione opción", 
                                                     "Menú principal", 
                                                     JOptionPane.DEFAULT_OPTION, 
                                                     null, 
                                                     opciones, 
                                                     opciones[0]);
-        do
-        {
+        
             if (opcion.equals(opciones[0]))
             {
-                ArrayList<Contacto> contactos = directorio.getContactos();
                 String mensaje = "";
-                for (int i = 0; i < contactos.size() ; i++)
+                for (int i = 0; i < directorio.getSize() ; i++)
                 {
                     mensaje = mensaje + i + ") " + directorio.getContacto(i) + "\n";
+                }
+                if (directorio.getSize() == 0)
+                {
+                    mensaje = "No hay contactos registrados";
                 }
                 JOptionPane.showMessageDialog(null, mensaje);
             }
@@ -43,10 +47,20 @@ public class Pantalla
                 int telefono = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese teléfono de nuevo contacto"));
                 Contacto c = new Contacto(nombre, apellido, correo, telefono);
                 directorio.addContacto(c);
+                JOptionPane.showMessageDialog(null, "Contacto agregado");
             }
             else if (opcion.equals(opciones[2]))
             {
-                
+                int index = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese índice de contacto para borrar"));
+                if (index < 0 || index > directorio.getSize() - 1)
+                {
+                    JOptionPane.showMessageDialog(null, "No se puede borrar contacto");
+                }
+                else 
+                {
+                    directorio.deleteContacto(index);  
+                    JOptionPane.showMessageDialog(null, "Contacto borrado");
+                }
             }
             else
             {

@@ -24,4 +24,9 @@ public class Directorio
     {
         this.contactos.remove(index);
     }
+    
+    public int getSize()
+    {
+        return this.contactos.size();
+    }
 }
