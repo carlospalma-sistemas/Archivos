@@ -10,6 +10,7 @@ public class Pantalla
     
     public void presentarMenu()
     {
+        directorio.leerContactos();
         String [] opciones = {
             "Listar contactos",
             "Ingresar nuevo contacto",
@@ -47,6 +48,7 @@ public class Pantalla
                 int telefono = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese teléfono de nuevo contacto"));
                 Contacto c = new Contacto(nombre, apellido, correo, telefono);
                 directorio.addContacto(c);
+                directorio.guardarContactos();
                 JOptionPane.showMessageDialog(null, "Contacto agregado");
             }
             else if (opcion.equals(opciones[2]))

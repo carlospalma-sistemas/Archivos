@@ -1,5 +1,6 @@
 package Logica;
 import java.util.ArrayList;
+import Persistencia.DAOContactos;
 
 public class Directorio
 {
@@ -14,7 +15,7 @@ public class Directorio
     {
         return this.contactos;
     }
-    
+      
     public Contacto getContacto(int index)
     {
         return this.contactos.get(index);
@@ -28,5 +29,17 @@ public class Directorio
     public int getSize()
     {
         return this.contactos.size();
+    }
+    
+    public void guardarContactos()
+    {
+        DAOContactos dao = new DAOContactos();
+        dao.guardarTodosLosContactos(this);
+    }
+    
+    public void leerContactos()
+    {
+        DAOContactos dao = new DAOContactos();
+        this.contactos = dao.leerTodosLosContactos();
     }
 }

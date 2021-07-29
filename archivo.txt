@@ -1,0 +1,4 @@
+Carlos;Palma;carlos@uis.edu.co;12345
+Cielo;Chacón;cielo@uis.edu.co;45678
+Eduardo;Palma;eduardo@uis;9999
+
