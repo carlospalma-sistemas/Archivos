@@ -47,9 +47,16 @@ public class Pantalla
                 String correo = JOptionPane.showInputDialog(null, "Ingrese correo de nuevo contacto");
                 int telefono = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese teléfono de nuevo contacto"));
                 Contacto c = new Contacto(nombre, apellido, correo, telefono);
-                directorio.addContacto(c);
-                directorio.guardarContactos();
-                JOptionPane.showMessageDialog(null, "Contacto agregado");
+                boolean guardado = directorio.guardarContacto(c);
+                if (guardado == true)
+                {
+                    JOptionPane.showMessageDialog(null, "Contacto agregado");    
+                }
+                else 
+                {
+                    JOptionPane.showMessageDialog(null, "Contacto no agregado. Intente de nuevo");    
+                }
+                
             }
             else if (opcion.equals(opciones[2]))
             {

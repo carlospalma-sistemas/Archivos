@@ -2,6 +2,7 @@ package Logica;
 
 public class Contacto
 {
+    private int id;
     private String nombre;
     private String apellido;
     private String correo;
@@ -21,6 +22,25 @@ public class Contacto
         this.apellido = apellido;
         this.correo = correo;
         this.telefono = telefono;
+    }
+    
+    public Contacto(int id, String nombre, String apellido, String correo, int telefono)
+    {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.telefono = telefono;
+    }
+    
+    public int getId()
+    {
+        return this.id;
+    }
+    
+    public void setId(int id)
+    {
+        this.id = id;
     }
     
     public String getNombre(){
@@ -57,7 +77,7 @@ public class Contacto
     
     public String toString()
     {
-        return this.nombre + " " + this.apellido + " - Correo: " + this.correo + " - Teléfono: " + this.telefono;
+        return "[" + this.id + "] " + this.nombre + " " + this.apellido + " - Correo: " + this.correo + " - Teléfono: " + this.telefono;
     }
 }
 
