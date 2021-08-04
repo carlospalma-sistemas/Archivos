@@ -21,6 +21,11 @@ public class Directorio
         return this.contactos.get(index);
     }
     
+    public void setContacto(int index, Contacto c)
+    {
+        this.contactos.set(index, c);
+    }
+    
     public void deleteContacto(int index)
     {
         this.contactos.remove(index);
@@ -50,5 +55,25 @@ public class Directorio
     {
         DAOTContactos dao = new DAOTContactos();
         this.contactos = dao.consultarContactos();
+    }
+    
+    public void actualizarContacto(int index, Contacto c)
+    {
+        DAOTContactos dao = new DAOTContactos();
+        boolean modificado = dao.modificarContacto(c);
+        if (modificado == true)
+        {
+            setContacto(index, c);
+        }
+    }
+    
+    public void borrarContacto(int index)
+    {
+        DAOTContactos dao = new DAOTContactos();
+        boolean borrado = dao.borrarContacto(getContacto(index));
+        if (borrado == true)
+        { 
+            deleteContacto(index);
+        }
     }
 }

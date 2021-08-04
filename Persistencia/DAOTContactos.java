@@ -53,32 +53,51 @@ public class DAOTContactos
         {
             e.printStackTrace();
         }
+        con.cerrarConexion();
         return id;
     }
     
     
-    public void modificarContacto(Contacto c)
+    public boolean modificarContacto(Contacto c)
     {
+        boolean modificado;
         String sql = "UPDATE TContactos " +
                      "SET nombre = '"+ c.getNombre() +"', apellido = '"+ c.getApellido() +"', correo = '"+ c.getCorreo() +"', telefono = "+ c.getTelefono() +" " + 
                      "WHERE id = "+ c.getId() +"";
-        //ENVIAR SQL
-        //RECIBIR LAS FILAS AFECTADAS
-        //SI CANT > 0
-           //SI SE PUDO HACER LA MODIFICAICON
-        //SI NO 
-           //NO SE PUDO HACER LA MODIFICACION
+        Conexion con = new Conexion();
+        con.crearConexion();
+        try
+        {
+            con.ejecutarUpdate(sql);
+            modificado = true;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            modificado = false;
+        }
+        con.cerrarConexion();
+        return modificado;
     }
     
-    public void borrarContacto(Contacto c)
+    public boolean borrarContacto(Contacto c)
     {
+        boolean borrado;
         String sql = "DELETE FROM TContactos " +
                      "WHERE id = "+ c.getId() +"";
-        //ENVIAR SQL
-        //RECIBIR LAS FILAS AFECTADAS
-        //SI CANT > 0
-           //SI SE PUDO HACER LA eliminación
-        //SI NO 
-           //NO SE PUDO HACER LA eliminación
+        Conexion con = new Conexion();
+        con.crearConexion();
+        try
+        {
+            con.ejecutarUpdate(sql);
+            borrado = true;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            borrado = false;
+        }
+        con.cerrarConexion();
+        return borrado;
     }
 }
