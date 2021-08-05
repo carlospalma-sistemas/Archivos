@@ -1,10 +1,9 @@
-import Presentacion.Pantalla;
+import Presentacion.PantallaGrafica;
 
 public class Main
 {
     public static void main(String [] args)
     {
-        Pantalla p = new Pantalla();
-        p.presentarMenu(); 
+        PantallaGrafica p = new PantallaGrafica();
     }
 }
