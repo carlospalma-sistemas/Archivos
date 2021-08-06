@@ -75,6 +75,12 @@ public class Contacto
         this.telefono = telefono;
     }
     
+    public Object[] getArrayContacto()
+    {
+        Object[] r = {id, nombre, apellido, correo, telefono};
+        return r;
+    }
+    
     public String toString()
     {
         return "[" + this.id + "] " + this.nombre + " " + this.apellido + " - Correo: " + this.correo + " - Teléfono: " + this.telefono;

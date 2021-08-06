@@ -5,10 +5,21 @@ import Persistencia.DAOTContactos;
 public class Directorio
 {
     private ArrayList<Contacto> contactos = new ArrayList<Contacto>();
+    private ArrayList<Contacto> contactosFiltrados = new ArrayList<Contacto>();
     
     public void addContacto(Contacto c)
     {
         contactos.add(c);
+    }
+    
+    public Object[][] getMatrizContactos()
+    {
+        Object[][] matriz = new Object[getSize()][5];
+        for (int i=0; i<getSize(); i++)
+        {
+            matriz[i] = getContacto(i).getArrayContacto();
+        }
+        return matriz;
     }
     
     public ArrayList<Contacto> getContactos()
@@ -19,6 +30,11 @@ public class Directorio
     public Contacto getContacto(int index)
     {
         return this.contactos.get(index);
+    }
+    
+    public Contacto getContactoFiltrado(int index)
+    {
+        return this.contactosFiltrados.get(index);
     }
     
     public void setContacto(int index, Contacto c)
@@ -34,6 +50,11 @@ public class Directorio
     public int getSize()
     {
         return this.contactos.size();
+    }
+    
+    public int getSizeFiltro()
+    {
+        return this.contactosFiltrados.size();
     }
     
     public boolean guardarContacto(Contacto c)
@@ -56,6 +77,13 @@ public class Directorio
         DAOTContactos dao = new DAOTContactos();
         this.contactos = dao.consultarContactos();
     }
+    
+    public void leerContactos(int id, String nombre, String apellido, String correo, int telefono)
+    {
+        DAOTContactos dao = new DAOTContactos();
+        this.contactosFiltrados = dao.consultarContactos(id, nombre, apellido, correo, telefono);
+    }
+    
     
     public void actualizarContacto(int index, Contacto c)
     {
